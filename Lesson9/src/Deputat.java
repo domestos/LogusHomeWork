@@ -27,6 +27,7 @@ public class Deputat extends Person {
         chakDeputat();
     }
 
+
     public String getFirslName() {
         return firslName;
     }
@@ -43,7 +44,7 @@ public class Deputat extends Person {
         this.surName = surName;
     }
 
-    public boolean isGrafter() {
+    public boolean getGrafter() {
         return grafter;
     }
 
