@@ -24,19 +24,11 @@ public class Rada {
     private Map<Integer, Fraction> fractions = new HashMap<>();
 
 
-    private boolean checkString(String s) {
-        if (s.isEmpty() || s == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     public void addFraction() {
         System.out.println("entered name fraction");
-        String nameFraction = scanString();
-        if (checkString(nameFraction)) {
-
+        String nameFraction = CheckValue.scanString();
+        if (CheckValue.checkString(nameFraction)) {
             Fraction fraction = new Fraction(nameFraction);
             putInFractions(fraction);
         } else {
@@ -74,39 +66,6 @@ public class Rada {
     }
 
 
-    private String scanString() {
-        String line = null;
-        String message = "Line can't be empty.Tray again.";
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            try {
-                line = scanner.nextLine();
-                if (checkString(line)) {
-                    return line;
-                } else {
-                    if (!checkError(message)) {
-                        break;
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println("something wrong");
-            }
-        }
-        return line;
-    }
-
-    private boolean checkError(String message) {
-        if (error > 0) {
-            System.out.println(message);
-            error--;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
     public void printFractions() {
         Iterator iterator = fractions.keySet().iterator();
 
@@ -114,7 +73,7 @@ public class Rada {
             Integer key = (Integer) iterator.next();
             Fraction value = fractions.get(key);
 
-            System.out.println(key + " " + value.getNameFraction());
+            System.out.println(key + " : " + value.getNameFraction());
         }
 
     }
@@ -141,8 +100,8 @@ public class Rada {
 
     public void deleFraction() {
         if (!fractions.isEmpty()) {
+            System.out.println("0 : || EXIT || ");
             printFractions();
-            System.out.println("    0 : || EXIT || \n");
             System.out.println("select fraction what a you want remove");
             int select = scanInt();
             if (select != 0) {
@@ -151,7 +110,7 @@ public class Rada {
                 } else {
                     System.out.println("not founded...");
                     String message = "Bye...";
-                    if (checkError(message)) {
+                    if (CheckValue.checkError(message)) {
                         deleFraction();
                     }
                 }
@@ -160,100 +119,8 @@ public class Rada {
             System.out.println("Fractions not founded...");
         }
     }
-
-
-
-
 }
 
 
-
-
-
-/*
-*
-*
-    private String scnaString() {
-        Scanner scanner;
-        while (true) {
-            try {
-                scanner = new Scanner(System.in);
-                String nameFraction = scanner.nextLine();
-                if(!nameFraction.trim().isEmpty() && nameFraction !=null){
-                    return nameFraction;
-                }
-                if(error>0){
-                    System.out.println("Name fraction can not be empty! give another name" );
-
-                    error--;
-                }else{
-                    error = erroreCount;
-                    System.out.println("bay....");
-                    break;
-                }
-
-            } catch (Exception e) {
-                System.out.println("Sorry... but you entered incorrect Values");
-                break;
-            }
-        }
-
-        return null;
-    }
-
-    public void addFraction() {
-
-        Fraction fraction;
-
-        System.out.println(" give name new Fraction");
-
-        String nameFraction  = scnaString();
-
-        checkScanString(nameFraction);
-
-        fraction = new Fraction(nameFraction);
-
-        if (fractions.isEmpty()){
-
-        }
-
-
-
-
-
-    }
-
-    private boolean checkScanString(String nameFraction) {
-        if(nameFraction != null && !nameFraction.isEmpty()){return true;}
-        return false;
-    }
-
-    private boolean checkEqualsFraction(Fraction fraction) {
-
-        for (Fraction f : fractions.values()){
-            if(f.equals(fraction)){return false;}
-        }
-        return true;
-    }
-
-    public void deleFraction() {
-
-
-    }
-
-    public void printFractions() {
-        if (fractions.isEmpty()) {
-            System.out.println(" Sorry... Fraction not founded ! ");
-
-        } else {
-            for(Fraction f : fractions.values()){
-                System.out.println(f.getNameFraction());
-            }
-
-        }
-    }
-
-*
-* */
 
 

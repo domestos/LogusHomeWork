@@ -6,7 +6,11 @@ public class MainRada {
 
     public static void main(String[] args) {
         Menu menu = new Menu();
-        menu.radaMenu();
+        Fraction fraction = new Fraction();
+        fraction.creatDeputat();
+
+
+     //   menu.radaMenu();
     }
 
 

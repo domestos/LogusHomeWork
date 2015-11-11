@@ -1,18 +1,25 @@
 import java.util.LinkedHashSet;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Fraction implements Comparable<Fraction>  {
 
     private static  int count=1;
+
     private int id;
 
     private String nameFraction;
 
-    private Set deputats   = new LinkedHashSet();
+    private Set deputats = new LinkedHashSet();
 
     public Fraction(String nameFractio) {
         this.nameFraction = nameFractio;
         this.id = count++;
+        this.deputats = deputats;
+    }
+
+    public Fraction() {
+
     }
 
 
@@ -40,6 +47,24 @@ public class Fraction implements Comparable<Fraction>  {
         this.nameFraction = nameFraction;
     }
 
+    public void addDeputat(){
+        Deputat deputat = creatDeputat();
+        deputats.add(deputat);
+    }
+
+    public Deputat creatDeputat() {
+        System.out.println("what is your first name?");
+        String fname = CheckValue.scanString();
+        System.out.println("what is your surname?");
+        String sname = CheckValue.scanString();
+        System.out.println("how old are you?");
+        int age = CheckValue.scanInt();
+        Deputat deputat = new Deputat(fname, sname, age);
+        return deputat;
+    }
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,4 +85,7 @@ public class Fraction implements Comparable<Fraction>  {
     public int compareTo(Fraction o) {
         return this.getNameFraction().compareToIgnoreCase(o.getNameFraction());
     }
+
+
+
 }
